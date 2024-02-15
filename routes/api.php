@@ -20,3 +20,5 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::get('/me', [UserController::class, 'me']);
 });
+
+Route::fallback(fn () => to_route('index'));
