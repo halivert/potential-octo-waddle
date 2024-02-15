@@ -19,8 +19,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', [HomeController::class, 'home'])
-    ->middleware(['auth']);
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/home', [HomeController::class, 'home']);
 
-Route::get('/me', [UserController::class, 'me'])
-    ->middleware(['auth']);
+    Route::get('/me', [UserController::class, 'me']);
+});
